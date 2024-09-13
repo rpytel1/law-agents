@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  trainer:
+    image: "rfl/llm-agents:latest"
+    build: ./code
+    container_name: "llm-agents"
+    shm_size: 32gb
+    network_mode: "host"
+    volumes:
+      - "./code:/rfl/code"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    stdin_open: "true"
+    tty: "true"
+    privileged: true
